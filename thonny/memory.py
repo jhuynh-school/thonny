@@ -61,14 +61,16 @@ class MemoryFrame(TreeFrame):
 class VariablesFrame(MemoryFrame):
     def __init__(self, master, consider_heading_stripe=True):
         MemoryFrame.__init__(
-            self, master, ("name", "id", "value"), consider_heading_stripe=consider_heading_stripe
+            self, master, ("name", "type", "id", "value"), consider_heading_stripe=consider_heading_stripe
         )
 
         self.tree.column("name", width=120, anchor=tk.W, stretch=False)
+        self.tree.column("type", width=120, anchor=tk.W, stretch=False)
         self.tree.column("id", width=450, anchor=tk.W, stretch=True)
         self.tree.column("value", width=450, anchor=tk.W, stretch=True)
 
         self.tree.heading("name", text=tr("Name"), anchor=tk.W)
+        self.tree.heading("type", text=tr("Type"), anchor=tk.W)
         self.tree.heading("id", text=tr("Value ID"), anchor=tk.W)
         self.tree.heading("value", text=tr("Value"), anchor=tk.W)
 
@@ -92,7 +94,7 @@ class VariablesFrame(MemoryFrame):
             # self.tree.columnconfigure(1, weight=1, width=400)
             # self.tree.columnconfigure(2, weight=0)
         else:
-            self.tree.configure(displaycolumns=("name", "value"))
+            self.tree.configure(displaycolumns=("name", "type", "value"))
             # self.tree.columnconfigure(1, weight=0)
             # self.tree.columnconfigure(2, weight=1, width=400)
 
