@@ -52,7 +52,6 @@ class MemoryFrame(TreeFrame):
             id_str = self.tree.item(iid)["values"][1]
             if id_str in ["", None, "None"]:
                 return None
-
             return parse_object_id(id_str)
 
         return None

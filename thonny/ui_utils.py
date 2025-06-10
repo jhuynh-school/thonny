@@ -600,8 +600,8 @@ class TreeFrame(ttk.Frame):
         for item in self.tree.selection():
             text = self.tree.item(item, option="text")
             values = map(str, self.tree.item(item, option="values"))
-            combined = text + "\t" + "\t".join(values)
-            texts.append(combined.strip("\t"))
+            combined = text + "" + ", ".join(values)
+            texts.append(combined.strip(", "))
         self.clipboard_clear()
         self.clipboard_append(os.linesep.join(texts))
 

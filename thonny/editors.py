@@ -1264,7 +1264,8 @@ class EditorNotebook(CustomNotebook):
     def _cmd_goto_source_line(self):
         editor = self.get_current_editor()
         if editor:
-            line_no = simpledialog.askinteger(tr("Go to line"), tr("Line number"))
+            end_lineno = editor._code_view.text.get_line_count()
+            line_no = simpledialog.askinteger(tr("Go to line"), tr(f"Enter a line number between 1 and {end_lineno}"))
             if line_no:
                 editor.select_line(line_no)
 
